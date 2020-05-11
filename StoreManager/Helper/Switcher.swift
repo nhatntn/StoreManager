@@ -22,6 +22,10 @@ class Switcher {
             rootVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginVCID") as! LoginVC
         }
         
+        if let rootVC1 = rootVC, let topWindow = UIApplication.shared.windows.first,
+            let rootVC2 = topWindow.rootViewController, type(of: rootVC1) == type(of: rootVC2) {
+            return
+        }
         UIApplication.shared.windows.first?.rootViewController = rootVC
         UIApplication.shared.windows.first?.makeKeyAndVisible()
         

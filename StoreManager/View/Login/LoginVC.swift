@@ -176,6 +176,11 @@ class LoginVC: UIViewController {
         setupLoginRegisterSegmentedControl()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        Switcher.updateRootVC()
+    }
+    
     func setupLoginRegisterSegmentedControl() {
         loginRegisterSegmentedControl.snp.makeConstraints {
             $0.centerX.equalToSuperview()
