@@ -14,6 +14,8 @@
 		92508AFF2468690700CAD97D /* Vendor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92508AFE2468690700CAD97D /* Vendor.swift */; };
 		92508B042468DD2400CAD97D /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92508B032468DD2400CAD97D /* LoginVC.swift */; };
 		92508B072468DD8A00CAD97D /* LoginVC+handlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92508B062468DD8A00CAD97D /* LoginVC+handlers.swift */; };
+		92508B7D246931F400CAD97D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92508B7C246931F400CAD97D /* User.swift */; };
+		927E47592469954C00211803 /* Switcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927E47582469954C00211803 /* Switcher.swift */; };
 		92B325FC246812E000F3B341 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B325FB246812E000F3B341 /* MainViewController.swift */; };
 		92B325FE246813D600F3B341 /* StatusVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B325FD246813D600F3B341 /* StatusVC.swift */; };
 		92B32600246813E500F3B341 /* ItemsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B325FF246813E500F3B341 /* ItemsVC.swift */; };
@@ -40,12 +42,15 @@
 /* Begin PBXFileReference section */
 		2C14296397251E6E8D06B41E /* Pods_StoreManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StoreManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		90A44D1A3EE1CA2B6B09B5F9 /* Pods-StoreManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StoreManager.release.xcconfig"; path = "Target Support Files/Pods-StoreManager/Pods-StoreManager.release.xcconfig"; sourceTree = "<group>"; };
+		924C5BCB24695F9B00D5B735 /* StoreManager.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StoreManager.entitlements; sourceTree = "<group>"; };
 		92508ABA2468228800CAD97D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		92508ABD246844D300CAD97D /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		92508AC0246845D400CAD97D /* Extensiones.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensiones.swift; sourceTree = "<group>"; };
 		92508AFE2468690700CAD97D /* Vendor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vendor.swift; sourceTree = "<group>"; };
 		92508B032468DD2400CAD97D /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		92508B062468DD8A00CAD97D /* LoginVC+handlers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginVC+handlers.swift"; sourceTree = "<group>"; };
+		92508B7C246931F400CAD97D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		927E47582469954C00211803 /* Switcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Switcher.swift; sourceTree = "<group>"; };
 		92B325FB246812E000F3B341 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		92B325FD246813D600F3B341 /* StatusVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusVC.swift; sourceTree = "<group>"; };
 		92B325FF246813E500F3B341 /* ItemsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsVC.swift; sourceTree = "<group>"; };
@@ -96,6 +101,7 @@
 			children = (
 				92508ABD246844D300CAD97D /* Item.swift */,
 				92508AFE2468690700CAD97D /* Vendor.swift */,
+				92508B7C246931F400CAD97D /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -104,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				92508AC0246845D400CAD97D /* Extensiones.swift */,
+				927E47582469954C00211803 /* Switcher.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -160,6 +167,7 @@
 		92B7795C246689C4005A768A /* StoreManager */ = {
 			isa = PBXGroup;
 			children = (
+				924C5BCB24695F9B00D5B735 /* StoreManager.entitlements */,
 				92B326032468140900F3B341 /* Main */,
 				92B325FA246812A900F3B341 /* Resources */,
 				92508ABC246844B300CAD97D /* Model */,
@@ -355,9 +363,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92508B7D246931F400CAD97D /* User.swift in Sources */,
 				92508B042468DD2400CAD97D /* LoginVC.swift in Sources */,
 				92B77968246689C4005A768A /* StoreManager.xcdatamodeld in Sources */,
 				92508ABE246844D300CAD97D /* Item.swift in Sources */,
+				927E47592469954C00211803 /* Switcher.swift in Sources */,
 				92B32602246813EF00F3B341 /* SettingVC.swift in Sources */,
 				92B32600246813E500F3B341 /* ItemsVC.swift in Sources */,
 				92B7795E246689C4005A768A /* AppDelegate.swift in Sources */,
@@ -527,6 +537,7 @@
 			baseConfigurationReference = D9BBC469279BC7A1A43047FF /* Pods-StoreManager.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = StoreManager/StoreManager.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SP6AR62AWA;
 				INFOPLIST_FILE = StoreManager/Info.plist;
@@ -546,6 +557,7 @@
 			baseConfigurationReference = 90A44D1A3EE1CA2B6B09B5F9 /* Pods-StoreManager.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = StoreManager/StoreManager.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SP6AR62AWA;
 				INFOPLIST_FILE = StoreManager/Info.plist;

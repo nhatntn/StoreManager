@@ -17,8 +17,7 @@ class StatusVC: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .red
         
-        let loginVC = LoginVC()
-        self.present(loginVC, animated: true, completion: nil)
+
     }
     
 }

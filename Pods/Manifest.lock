@@ -174,9 +174,6 @@ PODS:
     - FirebaseAnalytics (= 6.2.2)
   - Firebase/CoreOnly (6.16.0):
     - FirebaseCore (= 6.6.1)
-  - Firebase/Firestore (6.16.0):
-    - Firebase/CoreOnly
-    - FirebaseFirestore (~> 1.10.0)
   - Firebase/Storage (6.16.0):
     - Firebase/CoreOnly
     - FirebaseStorage (~> 3.5.0)
@@ -299,7 +296,6 @@ PODS:
 DEPENDENCIES:
   - Firebase/Analytics
   - Firebase/Auth
-  - Firebase/Firestore
   - Firebase/Storage
   - FirebaseFirestoreSwift
   - RxCocoa (~> 5)
@@ -367,6 +363,6 @@ SPEC CHECKSUMS:
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: 718ca4671b83d73ffe9f510ab5696a41d3f55bd9
+PODFILE CHECKSUM: 8f8565aa762adc233aae3bbee2251301fa53cc14
 
 COCOAPODS: 1.8.3
