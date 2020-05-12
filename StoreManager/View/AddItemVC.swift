@@ -179,8 +179,9 @@ class AddItemVC: UIViewController {
     }
     
     func addItem(name: String, description: String?, price: Int) {
-        let vendor = Item.init(name: name, price: price, description: description)
-        guard let dictData = vendor.dictionary else {
+        let item = Item.init(name: name, price: price, description: description)
+        
+        guard let dictData = item.dictionary else {
             self.showAlert(alertText: "Add New Item", alertMessage: "Please check your inputs\nAnd try again")
             return
         }

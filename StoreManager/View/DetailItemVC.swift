@@ -119,7 +119,7 @@ class DetailItemVC: UIViewController {
     func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(VendorViewCell.self, forCellReuseIdentifier: "cellId")
+        tableView.register(VendorDetailViewCell.self, forCellReuseIdentifier: "cellId")
         tableView.separatorStyle = .none
         tableView.separatorColor = .white
         
@@ -138,7 +138,11 @@ class DetailItemVC: UIViewController {
         }
         
         self.vendors.removeAll()
-        self.db.collection("vendors").getDocuments() { (querySnapshot, err) in
+        let availableVendor = self.item.vendors?.compactMap {
+            return $1 > 0 ? $0 : nil
+            } ?? []
+        
+        self.db.collection("vendors").whereField("name", in: availableVendor).getDocuments() { (querySnapshot, err) in
             if let err = err {
                 self.showAlert(alertText: "Get Vendors", alertMessage: "Something went wrong\nPlease try later" +  err.localizedDescription)
                 return
@@ -173,7 +177,7 @@ extension DetailItemVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as? VendorViewCell,
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as? VendorDetailViewCell,
             vendors.count != 0 else {
                 return UITableViewCell()
         }
@@ -186,7 +190,7 @@ extension DetailItemVC: UITableViewDelegate, UITableViewDataSource {
     
 }
 
-class VendorViewCell: UITableViewCell {
+class VendorDetailViewCell: UITableViewCell {
     let cellView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(r: 63, g: 114, b: 175)

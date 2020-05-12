@@ -237,7 +237,7 @@
                                                     <rect key="frame" x="15" y="8" width="57" height="34"/>
                                                     <state key="normal" title="Vendors"/>
                                                     <connections>
-                                                        <segue destination="jlc-QY-VDs" kind="push" id="w6f-Vr-xpq"/>
+                                                        <segue destination="xxb-wE-RYo" kind="push" id="Lha-pH-Khe"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -286,64 +286,6 @@
             </objects>
             <point key="canvasLocation" x="716" y="653"/>
         </scene>
-        <!--Vendors-->
-        <scene sceneID="A8z-eE-xdE">
-            <objects>
-                <tableViewController storyboardIdentifier="VendorsVCID" hidesBottomBarWhenPushed="YES" id="jlc-QY-VDs" customClass="VendorsVC" customModule="StoreManager" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="dvv-CV-W14">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="ItemCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="100" id="MwN-xL-dsf">
-                                <rect key="frame" x="0.0" y="28" width="414" height="100"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MwN-xL-dsf" id="xKV-z7-pXm">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ghA-bI-cjc">
-                                            <rect key="frame" x="15" y="8" width="84" height="84"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" secondItem="ghA-bI-cjc" secondAttribute="height" multiplier="25:25" id="PKy-or-N1V"/>
-                                            </constraints>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ay4-tE-xvy">
-                                            <rect key="frame" x="119" y="19" width="260" height="62"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="ghA-bI-cjc" secondAttribute="bottom" constant="8" id="FBE-dY-dy3"/>
-                                        <constraint firstItem="ghA-bI-cjc" firstAttribute="leading" secondItem="xKV-z7-pXm" secondAttribute="leading" constant="15" id="Ggl-ua-UpO"/>
-                                        <constraint firstItem="Ay4-tE-xvy" firstAttribute="leading" secondItem="ghA-bI-cjc" secondAttribute="trailing" constant="20" id="HVL-ti-j9Q"/>
-                                        <constraint firstItem="Ay4-tE-xvy" firstAttribute="top" secondItem="xKV-z7-pXm" secondAttribute="topMargin" constant="8" id="MHj-Uc-dyx"/>
-                                        <constraint firstItem="ghA-bI-cjc" firstAttribute="top" secondItem="xKV-z7-pXm" secondAttribute="top" constant="8" id="ciB-e3-ENK"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="Ay4-tE-xvy" secondAttribute="trailing" constant="15" id="txQ-Wq-fX9"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="Ay4-tE-xvy" secondAttribute="bottom" constant="8" id="wq1-O8-LPu"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="jlc-QY-VDs" id="Wmp-Ax-xPi"/>
-                            <outlet property="delegate" destination="jlc-QY-VDs" id="QkO-9p-yIR"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Vendors" id="vlh-bI-fj9">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="82M-gj-gUo">
-                            <connections>
-                                <segue destination="FHt-rx-6eG" kind="push" id="4g8-9b-KM3"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iDt-Rv-4cc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1553.6231884057972" y="652.90178571428567"/>
-        </scene>
         <!--Add Vendor-->
         <scene sceneID="eEa-gB-00j">
             <objects>
@@ -363,7 +305,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SWi-dH-Gy0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2349" y="653"/>
+            <point key="canvasLocation" x="2267" y="653"/>
         </scene>
         <!--Add Item-->
         <scene sceneID="OKh-DB-oYk">
@@ -384,22 +326,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pm7-cl-aiC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2241" y="-81"/>
-        </scene>
-        <!--DetailItemVC-->
-        <scene sceneID="0zI-00-bB9">
-            <objects>
-                <viewController id="DWT-F1-UvK" userLabel="DetailItemVC" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Gti-5a-EnD">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="YnR-YR-Fck"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VRr-bW-78f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2936" y="-81"/>
+            <point key="canvasLocation" x="2267" y="-81"/>
         </scene>
         <!--ItemsVC-->
         <scene sceneID="QL6-i1-gzT">
@@ -430,6 +357,28 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IVn-4J-g2t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1553.6231884057972" y="-81.026785714285708"/>
+        </scene>
+        <!--VendorsVC-->
+        <scene sceneID="oix-Hw-RzI">
+            <objects>
+                <viewController id="xxb-wE-RYo" userLabel="VendorsVC" customClass="VendorsVC" customModule="StoreManager" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8JK-0N-UEz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="1Me-fM-MT0"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="l3L-IA-z6m">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Z44-QW-by1">
+                            <connections>
+                                <segue destination="FHt-rx-6eG" kind="show" id="6nc-qz-9Ki"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oKT-ih-50Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1554" y="653"/>
         </scene>
     </scenes>
     <resources>

@@ -14,7 +14,7 @@ public struct Item: Codable {
     var price: Int
     var description: String?
     var imageUrl: String?
-    var vendors: [Vendor]?
+    var vendors: [String: Int]?
     
     enum CodingKeys: String, CodingKey {
         case name

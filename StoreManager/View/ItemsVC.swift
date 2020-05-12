@@ -28,6 +28,7 @@ class ItemsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupTableView()
+        self.title = "Items"
         
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
@@ -61,7 +62,7 @@ class ItemsVC: UIViewController {
         self.items.removeAll()
         self.db.collection("items").getDocuments() { (querySnapshot, err) in
             if let err = err {
-                self.showAlert(alertText: "Get Items", alertMessage: "Something went wrong\nPlease try later" +  err.localizedDescription)
+                self.showAlert(alertText: "Get Items", alertMessage: "Something went wrong\nPlease try later" + err.localizedDescription)
                 return
             }
             
@@ -136,6 +137,10 @@ extension ItemsVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard items.count != 0 else {
+            return
+        }
+        
         let detailVC = DetailItemVC()
         let item: Item
         if isFiltering {
@@ -166,7 +171,7 @@ extension ItemsVC: UISearchBarDelegate {
 class ItemViewCell: UITableViewCell {
     let cellView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(r: 63, g: 114, b: 175)
+        view.backgroundColor = UIColor(r: 17, g: 45, b: 78)
         view.layer.cornerRadius = 10
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
