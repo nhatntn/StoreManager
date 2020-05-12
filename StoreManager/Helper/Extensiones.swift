@@ -44,7 +44,7 @@ extension UIViewController {
     func showSpinner(onView : UIView) {
         let spinnerView = UIView.init(frame: onView.bounds)
         spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
-        let ai = UIActivityIndicatorView.init(style: .whiteLarge)
+        let ai = UIActivityIndicatorView.init(style: UIActivityIndicatorView.Style.large)
         ai.startAnimating()
         ai.center = spinnerView.center
         
@@ -63,9 +63,9 @@ extension UIViewController {
         }
     }
     
-    func showAlert(alertText : String, alertMessage : String) {
+    func showAlert(alertText : String, alertMessage : String, handler: ((UIAlertAction) -> Void)? = nil) {
         let alert = UIAlertController(title: alertText, message: alertMessage, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "Got it", style: UIAlertAction.Style.cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Got it", style: UIAlertAction.Style.cancel, handler: handler))
         //Add more actions as you see fit
         self.present(alert, animated: true, completion: nil)
     }
@@ -95,7 +95,6 @@ extension AuthErrorCode {
     }
 }
 
-
 extension UIViewController{
     func handleError(_ error: Error) {
         if let errorCode = AuthErrorCode(rawValue: error._code) {
@@ -111,4 +110,41 @@ extension UIViewController{
         }
     }
 
+}
+
+extension UITextField {
+    func isValidEmail() -> Bool {
+        guard let text = self.text else {
+            return false
+        }
+        
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailPred.evaluate(with: text)
+    }
+}
+
+
+extension UIImageView {
+    
+    public func imageFromServerURL(urlString: String, PlaceHolderImage:UIImage) {
+        
+        if self.image == nil{
+            self.image = PlaceHolderImage
+        }
+        
+        URLSession.shared.dataTask(with: NSURL(string: urlString)! as URL, completionHandler: { (data, response, error) -> Void in
+            
+            if error != nil {
+                print(error ?? "No Error")
+                return
+            }
+            DispatchQueue.main.async(execute: { () -> Void in
+                let image = UIImage(data: data!)
+                self.image = image
+            })
+            
+        }).resume()
+    }
+    
 }

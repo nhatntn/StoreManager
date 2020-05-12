@@ -24,7 +24,7 @@ class LoginVC: UIViewController {
     
     lazy var loginRegisterButton: UIButton = {
         let button = UIButton(type: .system)
-        button.backgroundColor = UIColor(r: 80, g: 101, b: 161)
+        button.backgroundColor = UIColor(r: 63, g: 114, b: 175)
         button.setTitle("Sign In", for: UIControl.State())
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitleColor(UIColor.white, for: UIControl.State())
@@ -37,7 +37,7 @@ class LoginVC: UIViewController {
     
     lazy var forgetPasswordButton: UIButton = {
         let button = UIButton(type: .system)
-        button.backgroundColor = UIColor(r: 80, g: 101, b: 161)
+        button.backgroundColor = UIColor(r: 63, g: 114, b: 175)
         button.setTitle("Forget Password", for: UIControl.State())
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitleColor(UIColor.white, for: UIControl.State())
@@ -118,7 +118,7 @@ class LoginVC: UIViewController {
     lazy var loginRegisterSegmentedControl: UISegmentedControl = {
         let sc = UISegmentedControl(items: ["Sign In", "Sign Up"])
         sc.translatesAutoresizingMaskIntoConstraints = false
-        sc.tintColor = UIColor.white
+        sc.tintColor = UIColor(r: 219, g: 226, b: 238)
         sc.selectedSegmentIndex = 0
         sc.addTarget(self, action: #selector(handleLoginRegisterChange), for: .valueChanged)
         return sc
@@ -161,7 +161,7 @@ class LoginVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor(r: 61, g: 91, b: 151)
+        view.backgroundColor = UIColor(r: 17, g: 45, b: 78)
         
         view.addSubview(inputsContainerView)
         view.addSubview(loginRegisterButton)
@@ -196,11 +196,6 @@ class LoginVC: UIViewController {
             $0.bottom.equalTo(loginRegisterSegmentedControl.snp.top).offset(-28)
         }
     }
-    
-    var inputsContainerViewHeightAnchor: NSLayoutConstraint?
-    var nameTextFieldHeightAnchor: NSLayoutConstraint?
-    var emailTextFieldHeightAnchor: NSLayoutConstraint?
-    var passwordTextFieldHeightAnchor: NSLayoutConstraint?
     
     func setupInputsContainerView() {
         inputsContainerView.snp.makeConstraints {

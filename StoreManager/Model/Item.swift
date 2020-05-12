@@ -9,19 +9,19 @@
 import Foundation
 
 public struct Item: Codable {
-
-    let name: String
-    let state: String?
-    let country: String?
-    let isCapital: Bool?
-    let population: Int64?
-
+    
+    var name: String
+    var price: Int
+    var description: String?
+    var imageUrl: String?
+    var vendors: [Vendor]?
+    
     enum CodingKeys: String, CodingKey {
         case name
-        case state
-        case country
-        case isCapital = "capital"
-        case population
+        case price
+        case description
+        case imageUrl
+        case vendors
     }
 
 }
