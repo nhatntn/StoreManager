@@ -142,6 +142,10 @@ class DetailItemVC: UIViewController {
             return $1 > 0 ? $0 : nil
             } ?? []
         
+        if availableVendor.count == 0 {
+            return
+        }
+        
         self.db.collection("vendors").whereField("name", in: availableVendor).getDocuments() { (querySnapshot, err) in
             if let err = err {
                 self.showAlert(alertText: "Get Vendors", alertMessage: "Something went wrong\nPlease try later" +  err.localizedDescription)
@@ -154,6 +158,7 @@ class DetailItemVC: UIViewController {
             }
             self.tableView.reloadData()
         }
+        
     }
     
     private func loadData() {
