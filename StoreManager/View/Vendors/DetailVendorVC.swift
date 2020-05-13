@@ -19,11 +19,12 @@ class DetailVendorVC: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     private let db = Firestore.firestore()
     private let disposeBag = DisposeBag()
     lazy var newItem: Item? = { return self.items[0] }()
+    var items = [Item]()
     var countTextField: UITextField!
     
     private let tableView: UITableView = {
         let tv = UITableView()
-        tv.backgroundColor = UIColor(r: 17, g: 45, b: 78)
+        tv.backgroundColor = UIColor(r: 219, g: 226, b: 239)
         tv.translatesAutoresizingMaskIntoConstraints = false
         return tv
     }()
@@ -74,8 +75,6 @@ class DetailVendorVC: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     }()
     
     var vendor: Vendor!
-    var items: [Item] = []
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Detail Vendor"
@@ -85,7 +84,8 @@ class DetailVendorVC: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         self.view.backgroundColor = UIColor(r: 17, g: 45, b: 78)
         self.setupProfileView()
         self.setupTableView()
-        self.loadData()
+        self.loadVendorData()
+        self.loadItemsData()
     }
     
     @objc func saveTapped() {
@@ -197,17 +197,6 @@ class DetailVendorVC: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         addressTextField.text = vendor.address
         emailTextField.text = vendor.email
         phoneTextField.text = vendor.phone
-        
-        let myColor = UIColor(r: 219, g: 226, b: 239)
-        nameTextField.layer.borderColor = myColor.cgColor
-        addressTextField.layer.borderColor = myColor.cgColor
-        emailTextField.layer.borderColor = myColor.cgColor
-        phoneTextField.layer.borderColor = myColor.cgColor
-
-        nameTextField.layer.borderWidth = 1.0
-        addressTextField.layer.borderWidth = 1.0
-        emailTextField.layer.borderWidth = 1.0
-        phoneTextField.layer.borderWidth = 1.0
     }
     
     func setupTableView() {
@@ -238,7 +227,7 @@ class DetailVendorVC: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(VendorDetailViewCell.self, forCellReuseIdentifier: "cellId")
+        tableView.register(VendorDetaillItemViewCell.self, forCellReuseIdentifier: "cellId")
         tableView.separatorStyle = .none
         tableView.separatorColor = .white
         
@@ -300,6 +289,7 @@ class DetailVendorVC: UIViewController, UIPickerViewDataSource, UIPickerViewDele
                             print("Document successfully updated")
                         }
                     }
+                    self.loadVendorData()
                 }
             }
         }))
@@ -328,8 +318,10 @@ class DetailVendorVC: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         if let indexPath = tableView.indexPathForSelectedRow {
             tableView.deselectRow(at: indexPath, animated: true)
         }
-        
-        self.items.removeAll()
+        self.loadVendorData()
+    }
+    
+    private func loadItemsData() {
         self.db.collection("items").getDocuments() { (querySnapshot, err) in
             if let err = err {
                 self.showAlert(alertText: "Get Items", alertMessage: "Something went wrong\nPlease try later" + err.localizedDescription)
@@ -343,10 +335,31 @@ class DetailVendorVC: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         }
     }
     
-    private func loadData() {
-//        self.nameTextField.text = item.name
-//        self.descriptionTextField.text = item.description
-//        self.priceTextField.text = "\(item.price)"
+    private func loadVendorData() {
+        guard let id = self.vendor.id else {
+            return
+        }
+
+        self.db.collection("vendors").document(id).getDocument { (document, err) in
+            if let document = document, document.exists {
+                let vendor = try! DictionaryDecoder().decode(Vendor.self, from: document.data() ?? [:])
+                self.vendor = vendor
+            }
+        }
+        
+        self.tableView.reloadData()
+    }
+    
+    private func getItems() -> [Item] {
+        let reduceList = self.vendor.products.reduce([Item]()) { (items, current) in
+            if items.contains(where: { $0.name == current.name }) {
+                return items
+            }
+            var result = items
+            result.append(current)
+            return result
+        }
+        return reduceList
     }
 }
 
@@ -360,20 +373,20 @@ extension DetailVendorVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        return self.getItems().count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
-//        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as? VendorDetailViewCell,
-//            vendors.count != 0 else {
-//                return UITableViewCell()
-//        }
-//
-//        let vendor = vendors[indexPath.row]
-//        cell.backgroundColor = UIColor(r: 219, g: 226, b: 239)
-//        cell.nameLabel.text = vendor.name
-//        return cell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as? VendorDetaillItemViewCell,
+            vendor.products.count != 0 else {
+                return UITableViewCell()
+        }
+        let items = self.getItems()
+        let item = items[indexPath.row]
+        cell.backgroundColor = UIColor(r: 219, g: 226, b: 239)
+        cell.nameLabel.text = item.name
+        cell.priceLabel.text = "\(item.price) $"
+        return cell
     }
     
 }
@@ -407,4 +420,63 @@ extension DetailVendorVC: UIImagePickerControllerDelegate, UINavigationControlle
         dismiss(animated: true, completion: nil)
     }
     
+}
+
+class VendorDetaillItemViewCell: UITableViewCell {
+    let cellView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(r: 17, g: 45, b: 78)
+        view.layer.cornerRadius = 10
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    let nameLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = UIColor.white
+        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    let priceLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = UIColor.white
+        label.textAlignment = .right
+        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupView()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setupView() {
+        addSubview(cellView)
+        cellView.addSubview(nameLabel)
+        cellView.addSubview(priceLabel)
+        self.selectionStyle = .none
+        
+        cellView.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(20)
+            $0.left.right.equalToSuperview().inset(10)
+            $0.bottom.equalToSuperview()
+        }
+        
+        nameLabel.snp.makeConstraints {
+            $0.left.equalToSuperview().offset(20)
+            $0.top.bottom.equalToSuperview().inset(10)
+        }
+        
+        priceLabel.snp.makeConstraints {
+            $0.right.equalToSuperview().inset(20)
+            $0.top.bottom.equalToSuperview().inset(10)
+        }
+    }
 }
