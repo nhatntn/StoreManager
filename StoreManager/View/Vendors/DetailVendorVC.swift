@@ -11,10 +11,13 @@ import UIKit
 import Firebase
 import FirebaseFirestoreSwift
 import SnapKit
+import RxSwift
+import RxCocoa
 
 class DetailVendorVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
 
     private let db = Firestore.firestore()
+    private let disposeBag = DisposeBag()
     lazy var newItem: Item? = { return self.items[0] }()
     var countTextField: UITextField!
     
@@ -224,12 +227,14 @@ class DetailVendorVC: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         addButton.translatesAutoresizingMaskIntoConstraints = false
         addButton.setTitleColor(UIColor(r: 219, g: 226, b: 239), for: UIControl.State())
         addButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 24)
-        addButton.addTarget(self, action: #selector(handleAddNewItem), for: .touchUpInside)
         addButton.snp.makeConstraints {
             $0.top.equalTo(phoneTextField.snp.bottom).offset(15)
             $0.right.equalToSuperview().inset(15)
             $0.height.equalTo(titleLabel)
         }
+        addButton.rx.tap.bind {
+            self.handleAddNewItem()
+        }.disposed(by: disposeBag)
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -244,7 +249,7 @@ class DetailVendorVC: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         }
     }
     
-    @objc func handleAddNewItem(message: String?) {
+    @objc func handleAddNewItem(message: String? = nil) {
         let title = message ?? "Add New Item"
         let alert = UIAlertController(title: title, message: "\n\n\n\n\n\n", preferredStyle: .alert)
         

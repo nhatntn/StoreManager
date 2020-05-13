@@ -271,6 +271,8 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="C4k-zG-tt1"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="nearOutOfStockTextField" destination="h8c-J3-fdI" id="bCa-LF-7bn"/>
+                        <outlet property="outOfStockTextField" destination="qXb-G5-lxp" id="A2I-1O-mBF"/>
                         <outlet property="signOutButton" destination="y57-dd-JCW" id="BcJ-fe-jSg"/>
                     </connections>
                 </tableViewController>

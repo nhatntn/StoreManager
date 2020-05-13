@@ -12,9 +12,9 @@ public struct User: Codable {
     let id: String?
     let name: String?
     let email: String?
-    let outOfStock: Int
-    let nearOutOfStock: Int
-    let language: String
+    let outOfStock: Int = 5
+    let nearOutOfStock: Int = 10
+    let language: String = "Englist"
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -23,14 +23,5 @@ public struct User: Codable {
         case outOfStock
         case nearOutOfStock
         case language
-    }
-
-    init(dictionary: [String: AnyObject]) {
-        self.id = dictionary["id"] as? String
-        self.name = dictionary["name"] as? String
-        self.email = dictionary["email"] as? String
-        self.outOfStock = dictionary["outOfStock"] as? Int ?? 5
-        self.nearOutOfStock = dictionary["nearOutOfStock"] as? Int ?? 10
-        self.language = dictionary["language"] as? String ??  "English"
     }
 }

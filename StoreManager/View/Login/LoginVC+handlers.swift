@@ -119,8 +119,10 @@ extension LoginVC: UINavigationControllerDelegate {
             
             let uid = user.uid
             //successfully authenticated user
-            let dict = ["name": name, "email": email, "id": uid]
-            self?.registerUserIntoDatabaseWithUID(uid, values: dict as [String : AnyObject])
+            let userDatabase = User(id: uid, name: name, email: email)
+            if let dict = userDatabase.dictionary {
+                self?.registerUserIntoDatabaseWithUID(uid, values: dict as [String : AnyObject])
+            }
 
             UserDefaults.standard.set(true, forKey: "LoginStatus")
             Switcher.updateRootVC()
@@ -134,7 +136,9 @@ extension LoginVC: UINavigationControllerDelegate {
                 print(err ?? "")
                 return
             }
-            let user = User(dictionary: values)
+            UserDefaults.standard.set(values["outOfStock"] ?? 5, forKey: "outOfStock")
+            UserDefaults.standard.set(values["nearOutOfStock"] ?? 10, forKey: "nearOutOfStock")
+            UserDefaults.standard.set(values["language"] ?? "English", forKey: "language")
             self.dismiss(animated: true, completion: nil)
         }
     }
