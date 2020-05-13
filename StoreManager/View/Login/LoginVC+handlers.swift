@@ -135,8 +135,6 @@ extension LoginVC: UINavigationControllerDelegate {
                 return
             }
             let user = User(dictionary: values)
-            print(user)
-            
             self.dismiss(animated: true, completion: nil)
         }
     }
