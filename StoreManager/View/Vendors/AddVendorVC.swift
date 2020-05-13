@@ -93,7 +93,7 @@ class AddVendorVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor(r: 61, g: 91, b: 151)
+        view.backgroundColor = UIColor(r: 17, g: 45, b: 78)
         view.addSubview(inputsContainerView)
         view.addSubview(imageView)
         

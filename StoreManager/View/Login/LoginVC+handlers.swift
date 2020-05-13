@@ -118,8 +118,13 @@ extension LoginVC: UINavigationControllerDelegate {
             }
             
             let uid = user.uid
+            let outOfStock = 5
+            let nearOutOfStock = 10
+            let language = "English"
+            
             //successfully authenticated user
-            let userDatabase = User(id: uid, name: name, email: email)
+            let userDatabase = User(id: uid, name: name, email: email,
+                                    outOfStock: outOfStock, nearOutOfStock: nearOutOfStock, language: language)
             if let dict = userDatabase.dictionary {
                 self?.registerUserIntoDatabaseWithUID(uid, values: dict as [String : AnyObject])
             }

@@ -24,22 +24,6 @@
             </objects>
             <point key="canvasLocation" x="716" y="-81"/>
         </scene>
-        <!--Status-->
-        <scene sceneID="59l-Tx-eJr">
-            <objects>
-                <viewController id="v3h-9p-RMq" userLabel="Status" customClass="StatusVC" customModule="StoreManager" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="HPj-Ln-Hvv">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="jt5-xX-aff"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Status" image="timer" catalog="system" id="Cf9-GC-PWT" userLabel="Status"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aAh-bh-gnA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="716" y="-781"/>
-        </scene>
         <!--Main View Controller-->
         <scene sceneID="MFq-ll-vbr">
             <objects>
@@ -50,7 +34,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="v3h-9p-RMq" kind="relationship" relationship="viewControllers" id="z5B-y1-Rb1"/>
+                        <segue destination="tdU-zT-b0d" kind="relationship" relationship="viewControllers" id="awm-o6-JQ3"/>
                         <segue destination="VVI-mg-T71" kind="relationship" relationship="viewControllers" id="1jY-0r-cbr"/>
                         <segue destination="NNg-04-Fc8" kind="relationship" relationship="viewControllers" id="2qO-XP-lbV"/>
                     </connections>
@@ -273,6 +257,7 @@
                     <connections>
                         <outlet property="nearOutOfStockTextField" destination="h8c-J3-fdI" id="bCa-LF-7bn"/>
                         <outlet property="outOfStockTextField" destination="qXb-G5-lxp" id="A2I-1O-mBF"/>
+                        <outlet property="saveButotn" destination="C4k-zG-tt1" id="A3a-J2-g1x"/>
                         <outlet property="signOutButton" destination="y57-dd-JCW" id="BcJ-fe-jSg"/>
                     </connections>
                 </tableViewController>
@@ -374,9 +359,42 @@
             </objects>
             <point key="canvasLocation" x="1554" y="653"/>
         </scene>
+        <!--Status-->
+        <scene sceneID="nTi-aU-xEh">
+            <objects>
+                <navigationController id="tdU-zT-b0d" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Status" image="clock" catalog="system" id="2rH-ou-8kH"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fsx-x6-IyX">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="TaG-x4-E0s" kind="relationship" relationship="rootViewController" id="3S8-NK-QRJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iSo-3z-M6R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="716" y="-792"/>
+        </scene>
+        <!--Status-->
+        <scene sceneID="bII-ED-Upg">
+            <objects>
+                <viewController id="TaG-x4-E0s" customClass="StatusVC" customModule="StoreManager" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Og3-nf-3n8">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="o86-EF-2AN"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Status" id="4AQ-sQ-7ql"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8qN-jj-FcH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1554" y="-792"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="timer" catalog="system" width="128" height="121"/>
+        <image name="clock" catalog="system" width="128" height="121"/>
         <image name="tray.full" catalog="system" width="128" height="88"/>
         <image name="wrench" catalog="system" width="128" height="120"/>
     </resources>

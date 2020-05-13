@@ -274,7 +274,9 @@ class DetailVendorVC: UIViewController, UIPickerViewDataSource, UIPickerViewDele
                     self.showAlert(alertText: "Add New Item", alertMessage: "Something went wrong\nPlease try later" +  err.localizedDescription)
                     return
                 } else {
-                    self.showAlert(alertText: "Add New Item", alertMessage: "Successfully")
+                    self.showAlert(alertText: "Add New Item", alertMessage: "Successfully") { _ in
+                        self.loadItemsData()
+                    }
                     
                     guard let itemId = addedItem.id else {
                         return
@@ -332,6 +334,7 @@ class DetailVendorVC: UIViewController, UIPickerViewDataSource, UIPickerViewDele
                 let item = try! DictionaryDecoder().decode(Item.self, from: document.data())
                 self.items.append(item)
             }
+            self.tableView.reloadData()
         }
     }
     
