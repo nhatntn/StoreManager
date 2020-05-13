@@ -14,7 +14,7 @@ public struct Item: Codable {
     var description: String?
     var imageUrl: String?
     var id: String?
-    var vendors: [String: Int]?
+    var vendors: [String] = []
     var count: Int?
     
     enum CodingKeys: String, CodingKey {

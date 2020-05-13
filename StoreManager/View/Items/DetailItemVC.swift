@@ -87,7 +87,7 @@ class DetailItemVC: UIViewController {
     @objc func saveTapped() {
         guard let id = item.id, let name = nameTextField.text,
             let description = descriptionTextField.text, let priceString = priceTextField.text else {
-            return
+                return
         }
         
         // To update age and favorite color:
@@ -209,10 +209,7 @@ class DetailItemVC: UIViewController {
         }
         
         self.vendors.removeAll()
-        let availableVendor = self.item.vendors?.compactMap {
-            return $1 > 0 ? $0 : nil
-            } ?? []
-        
+        let availableVendor = self.item.vendors
         if availableVendor.count == 0 {
             return
         }
@@ -407,7 +404,7 @@ class VendorDetailViewCell: UITableViewCell {
             topController.showAlert(alertText: "Send Email", alertMessage: "Please login a email on your device\nAnd try again")
         }
     }
-
+    
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true)
     }

@@ -270,14 +270,30 @@ class DetailVendorVC: UIViewController, UIPickerViewDataSource, UIPickerViewDele
             addedItem.count = count
             var products = self.vendor.products
             products.append(addedItem)
+            let dictData = products.map { $0.dictionary ?? [:] }
             
             self.db.collection("vendors").document(id).updateData([
-                "products": FieldValue.arr(products)
+                "products": dictData
             ]) { err in
                 if let err = err {
-                    print("Error updating document: \(err)")
+                    self.showAlert(alertText: "Add New Item", alertMessage: "Something went wrong\nPlease try later" +  err.localizedDescription)
+                    return
                 } else {
-                    print("Document successfully updated")
+                    self.showAlert(alertText: "Add New Item", alertMessage: "Successfully") 
+                    
+                    guard let itemId = addedItem.id else {
+                        return
+                    }
+                    self.db.collection("items").document(itemId).updateData([
+                        "count": FieldValue.increment(Int64(count)),
+                        "vendors": FieldValue.arrayUnion([id])
+                    ]) { err in
+                        if let err = err {
+                            print("Error updating document: \(err)")
+                        } else {
+                            print("Document successfully updated")
+                        }
+                    }
                 }
             }
         }))
