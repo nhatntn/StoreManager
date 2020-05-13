@@ -389,7 +389,7 @@ extension DetailVendorVC: UITableViewDelegate, UITableViewDataSource {
         let item = items[indexPath.row]
         cell.backgroundColor = UIColor(r: 219, g: 226, b: 239)
         cell.nameLabel.text = item.name
-        cell.priceLabel.text = "\(item.price) $"
+        cell.priceLabel.text = "\(item.price)$"
         return cell
     }
     

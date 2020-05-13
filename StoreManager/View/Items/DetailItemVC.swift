@@ -278,7 +278,7 @@ extension DetailItemVC: UITableViewDelegate, UITableViewDataSource {
         if let item = vendor.products.first(where: { (item) -> Bool in
             return item.name == self.item.name
         }) {
-            cell.priceLabel.text = "\(item.price) $"
+            cell.priceLabel.text = "\(item.price)$"
         }
         return cell
     }
