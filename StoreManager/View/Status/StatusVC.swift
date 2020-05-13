@@ -34,7 +34,7 @@ class StatusVC: UIViewController {
     func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(ItemViewCell.self, forCellReuseIdentifier: "cellId")
+        tableView.register(ItemStatusViewCell.self, forCellReuseIdentifier: "cellId")
         tableView.separatorStyle = .none
         tableView.separatorColor = .white
         
@@ -103,7 +103,7 @@ extension StatusVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as? ItemViewCell,
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as? ItemStatusViewCell,
             items.count != 0 else {
                 return UITableViewCell()
         }
@@ -122,7 +122,7 @@ extension StatusVC: UITableViewDelegate, UITableViewDataSource {
             }
         }
         cell.nameLabel.text = item.name
-        cell.priceLabel.text = "\(item.price) $"
+        cell.countLabel.text = "\(item.count ?? 0) items"
         if let urlString = item.imageUrl {
             let image = UIImage(named: "default-product")!
             cell.profileImageView.imageFromServerURL(urlString: urlString, PlaceHolderImage: image)
@@ -170,7 +170,7 @@ class ItemStatusViewCell: UITableViewCell {
         return label
     }()
     
-    let priceLabel: UILabel = {
+    let countLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .right
         label.textColor = UIColor.white
@@ -187,11 +187,11 @@ class ItemStatusViewCell: UITableViewCell {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     func setupView() {
         addSubview(cellView)
         cellView.addSubview(nameLabel)
-        cellView.addSubview(priceLabel)
+        cellView.addSubview(countLabel)
         cellView.addSubview(profileImageView)
         self.selectionStyle = .none
         
@@ -214,7 +214,7 @@ class ItemStatusViewCell: UITableViewCell {
             $0.top.bottom.right.equalToSuperview().inset(10)
         }
         
-        priceLabel.snp.makeConstraints {
+        countLabel.snp.makeConstraints {
             $0.right.equalToSuperview().inset(20)
             $0.centerY.equalTo(cellView)
             $0.top.bottom.left.equalToSuperview().inset(10)
