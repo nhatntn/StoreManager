@@ -12,6 +12,5 @@ target 'StoreManager' do
   pod 'Firebase/Auth'
   pod 'FirebaseFirestoreSwift'
   pod 'Firebase/Storage'
-  pod "DownPicker"
 
 end

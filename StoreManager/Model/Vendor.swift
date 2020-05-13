@@ -14,9 +14,11 @@ public struct Vendor: Codable {
     var email: String?
     var phone: String?
     var imageUrl: String?
-    var products: [Item]?
+    var id: String?
+    var products: [Item]
 
     enum CodingKeys: String, CodingKey {
+        case id
         case name
         case address
         case email

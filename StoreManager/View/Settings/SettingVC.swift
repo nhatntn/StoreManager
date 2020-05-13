@@ -10,11 +10,9 @@ import UIKit
 import Firebase
 import RxSwift
 import RxCocoa
-import DownPicker
 
 class SettingVC: UITableViewController{
     @IBOutlet weak var signOutButton: UIButton!
-    @IBOutlet weak var languagePickerView: DownPicker!
     
     private let disposeBag = DisposeBag()
     

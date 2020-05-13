@@ -1,5 +1,5 @@
 //
-//  AddItemVC.swift
+//  AddVendorVC.swift
 //  StoreManager
 //
 //  Created by nhatnt on 5/12/20.
@@ -13,7 +13,7 @@ import FirebaseFirestoreSwift
 import RxSwift
 import RxCocoa
 
-class AddItemVC: UIViewController {
+class AddVendorVC: UIViewController {
     private let disposeBag = DisposeBag()
     private let db = Firestore.firestore()
     @IBOutlet weak var addButton: UIBarButtonItem!
@@ -30,7 +30,7 @@ class AddItemVC: UIViewController {
     
     lazy var imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "default-product")
+        imageView.image = UIImage(named: "default-profile")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
         
@@ -54,23 +54,37 @@ class AddItemVC: UIViewController {
         return view
     }()
     
-    let descriptionTextField: UITextField = {
+    let addressTextField: UITextField = {
         let tf = UITextField()
-        tf.placeholder = "Description"
+        tf.placeholder = "Address"
         tf.translatesAutoresizingMaskIntoConstraints = false
         return tf
     }()
     
-    let descriptionSeparatorView: UIView = {
+    let addressSeparatorView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(r: 220, g: 220, b: 220)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    let priceTextField: UITextField = {
+    let emailTextField: UITextField = {
         let tf = UITextField()
-        tf.placeholder = "Price"
+        tf.placeholder = "Email"
+        tf.translatesAutoresizingMaskIntoConstraints = false
+        return tf
+    }()
+    
+    let emailSeparatorView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(r: 220, g: 220, b: 220)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    let phoneTextField: UITextField = {
+        let tf = UITextField()
+        tf.placeholder = "Phone"
         tf.keyboardType = .numberPad
         tf.translatesAutoresizingMaskIntoConstraints = false
         return tf
@@ -79,7 +93,7 @@ class AddItemVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor(r: 17, g: 45, b: 78)
+        view.backgroundColor = UIColor(r: 61, g: 91, b: 151)
         view.addSubview(inputsContainerView)
         view.addSubview(imageView)
         
@@ -111,15 +125,17 @@ class AddItemVC: UIViewController {
         inputsContainerView.snp.makeConstraints {
             $0.top.equalTo(imageView.snp.bottom).offset(30)
             $0.centerX.equalToSuperview()
-            $0.height.equalTo(150)
+            $0.height.equalTo(200)
             $0.width.equalToSuperview().offset(-30)
         }
         
         inputsContainerView.addSubview(nameTextField)
         inputsContainerView.addSubview(nameSeparatorView)
-        inputsContainerView.addSubview(descriptionTextField)
-        inputsContainerView.addSubview(descriptionSeparatorView)
-        inputsContainerView.addSubview(priceTextField)
+        inputsContainerView.addSubview(addressTextField)
+        inputsContainerView.addSubview(addressSeparatorView)
+        inputsContainerView.addSubview(emailTextField)
+        inputsContainerView.addSubview(emailSeparatorView)
+        inputsContainerView.addSubview(phoneTextField)
         
         nameTextField.snp.makeConstraints {
             $0.left.equalToSuperview().inset(12)
@@ -134,22 +150,35 @@ class AddItemVC: UIViewController {
             $0.height.equalTo(1)
         }
         
-        descriptionTextField.snp.makeConstraints {
+        addressTextField.snp.makeConstraints {
             $0.left.equalToSuperview().inset(12)
             $0.top.equalTo(nameTextField.snp.bottom)
             $0.width.equalToSuperview()
             $0.height.equalTo(50)
         }
         
-        descriptionSeparatorView.snp.makeConstraints {
+        addressSeparatorView.snp.makeConstraints {
             $0.left.width.equalToSuperview()
-            $0.top.equalTo(descriptionTextField.snp.bottom)
+            $0.top.equalTo(addressTextField.snp.bottom)
             $0.height.equalTo(1)
         }
-
-        priceTextField.snp.makeConstraints {
+        
+        emailTextField.snp.makeConstraints {
             $0.left.equalToSuperview().inset(12)
-            $0.top.equalTo(descriptionTextField.snp.bottom)
+            $0.top.equalTo(addressTextField.snp.bottom)
+            $0.width.equalToSuperview()
+            $0.height.equalTo(50)
+        }
+        
+        emailSeparatorView.snp.makeConstraints {
+            $0.left.width.equalToSuperview()
+            $0.top.equalTo(emailTextField.snp.bottom)
+            $0.height.equalTo(1)
+        }
+        
+        phoneTextField.snp.makeConstraints {
+            $0.left.equalToSuperview().inset(12)
+            $0.top.equalTo(emailTextField.snp.bottom)
             $0.width.equalToSuperview()
             $0.height.equalTo(50)
         }
@@ -157,47 +186,53 @@ class AddItemVC: UIViewController {
     
     func setupAddButton() {
         self.addButton.rx.tap.bind {
-            guard let name = self.nameTextField.text, let priceText = self.priceTextField.text else {
-                self.showAlert(alertText: "Add New Item", alertMessage: "Please check your inputs\nAnd try again")
+            guard let email = self.emailTextField.text, let address = self.addressTextField.text,
+                let name = self.nameTextField.text else {
+                    self.showAlert(alertText: "Add New Vendor", alertMessage: "Please check your inputs\nAnd try again")
+                    return
+            }
+            
+            if !self.emailTextField.isValidEmail() {
+                self.showAlert(alertText: "Add New Vendor", alertMessage: "Your email adress is invalid")
                 return
             }
             
-            self.db.collection("items").whereField("name", isEqualTo: name).getDocuments() { (querySnapshot, err) in
+            self.db.collection("vendors").whereField("name", isEqualTo: name).getDocuments() { (querySnapshot, err) in
                 if let err = err {
-                    self.showAlert(alertText: "Add New Item", alertMessage: "Something went wrong\nPlease try later" +  err.localizedDescription)
+                    self.showAlert(alertText: "Add New Vendor", alertMessage: "Something went wrong\nPlease try later" +  err.localizedDescription)
                     return
                 }
                 if querySnapshot!.documents.count > 0 {
-                    self.showAlert(alertText: "Add New Item", alertMessage: "Account name already registered\nPlease try another")
+                    self.showAlert(alertText: "Add New Vendor", alertMessage: "Account name already registered\nPlease try another")
                     return
                 }
-                let description = self.descriptionTextField.text
-                let price = Int(priceText) ?? 0
-                self.addItem(name: name, description: description, price: price)
+                let phone = self.phoneTextField.text
+                let products: [Item] = []
+                self.addVendor(name: name, address: address,
+                               email: email, phone: phone, products: products)
             }
         }.disposed(by: disposeBag)
     }
     
-    func addItem(name: String, description: String?, price: Int) {
-        let item = Item.init(name: name, price: price, description: description)
-        
-        guard let dictData = item.dictionary else {
-            self.showAlert(alertText: "Add New Item", alertMessage: "Please check your inputs\nAnd try again")
+    func addVendor(name: String, address: String?, email: String?, phone: String?, products: [Item]) {
+        let vendor = Vendor(name: name, address: address, email: email, phone: phone, products: products)
+        guard let dictData = vendor.dictionary else {
+            self.showAlert(alertText: "Add New Vendor", alertMessage: "Please check your inputs\nAnd try again")
             return
         }
         
         var ref: DocumentReference? = nil
-        ref = db.collection("items").addDocument(data: dictData) { err in
+        ref = db.collection("vendors").addDocument(data: dictData) { err in
             if err != nil {
-                self.showAlert(alertText: "Add New Item", alertMessage: "Please check your inputs\nAnd try again")
+                self.showAlert(alertText: "Add New Vendor", alertMessage: "Please check your inputs\nAnd try again")
                 return
             }
-            self.showAlert(alertText: "Add New Item", alertMessage: "Successfully") { _ in
+            self.showAlert(alertText: "Add New Vendor", alertMessage: "Successfully") { _ in
                 self.navigationController?.popViewController(animated: true)
             }
             
             let id =  ref!.documentID
-            let storageRef = Storage.storage().reference().child("items_images").child("\(id).jpg")
+            let storageRef = Storage.storage().reference().child("vendors_images").child("\(id).jpg")
             if let profileImage = self.imageView.image, let uploadData = profileImage.jpegData(compressionQuality: 0.1) {
                 
                 storageRef.putData(uploadData, metadata: nil, completion: { (_, err) in
@@ -213,8 +248,9 @@ class AddItemVC: UIViewController {
                         }
                         
                         guard let url = url else { return }
-                        self.db.collection("items").document(id).updateData([
+                        self.db.collection("vendors").document(id).updateData([
                             "imageUrl": url.absoluteString,
+                            "id": id
                         ]) { err in
                             if let err = err {
                                 print("Error updating document: \(err)")
@@ -230,7 +266,7 @@ class AddItemVC: UIViewController {
     }
 }
 
-extension AddItemVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension AddVendorVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         // Local variable inserted by Swift 4.2 migrator.
@@ -259,9 +295,4 @@ extension AddItemVC: UIImagePickerControllerDelegate, UINavigationControllerDele
         dismiss(animated: true, completion: nil)
     }
     
-}
-
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey: Any]) -> [String: Any] {
-    return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
 }

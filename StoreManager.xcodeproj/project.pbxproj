@@ -108,6 +108,42 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9238A414246B176C00233062 /* Vendors */ = {
+			isa = PBXGroup;
+			children = (
+				927E4779246A4D6D00211803 /* VendorsVC.swift */,
+				927E477B246A5BFC00211803 /* AddVendorVC.swift */,
+				927E47E0246AD34B00211803 /* DetailVendorVC.swift */,
+			);
+			path = Vendors;
+			sourceTree = "<group>";
+		};
+		9238A415246B177D00233062 /* Items */ = {
+			isa = PBXGroup;
+			children = (
+				927E47D4246A85D900211803 /* ItemsVC.swift */,
+				927E47D6246A86E900211803 /* AddItemVC.swift */,
+				927E47DE246ABEAA00211803 /* DetailItemVC.swift */,
+			);
+			path = Items;
+			sourceTree = "<group>";
+		};
+		9238A416246B179D00233062 /* Status */ = {
+			isa = PBXGroup;
+			children = (
+				92B325FD246813D600F3B341 /* StatusVC.swift */,
+			);
+			path = Status;
+			sourceTree = "<group>";
+		};
+		9238A417246B17AA00233062 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				92B32601246813EF00F3B341 /* SettingVC.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		92508ABC246844B300CAD97D /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +189,7 @@
 				92B77963246689C4005A768A /* Main.storyboard */,
 				92B325FB246812E000F3B341 /* MainViewController.swift */,
 				92B7795D246689C4005A768A /* AppDelegate.swift */,
+				92B7795F246689C4005A768A /* SceneDelegate.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -185,7 +222,6 @@
 				92B325FA246812A900F3B341 /* Resources */,
 				92508ABC246844B300CAD97D /* Model */,
 				92B779872467040F005A768A /* View */,
-				92B7795F246689C4005A768A /* SceneDelegate.swift */,
 				92B7796E246689C8005A768A /* Info.plist */,
 				92B77966246689C4005A768A /* StoreManager.xcdatamodeld */,
 				92508ABF246845AD00CAD97D /* Helper */,
@@ -205,15 +241,11 @@
 		92B779872467040F005A768A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9238A416246B179D00233062 /* Status */,
+				9238A415246B177D00233062 /* Items */,
+				9238A414246B176C00233062 /* Vendors */,
+				9238A417246B17AA00233062 /* Settings */,
 				92508B052468DD6300CAD97D /* Login */,
-				92B325FD246813D600F3B341 /* StatusVC.swift */,
-				92B32601246813EF00F3B341 /* SettingVC.swift */,
-				927E4779246A4D6D00211803 /* VendorsVC.swift */,
-				927E47E0246AD34B00211803 /* DetailVendorVC.swift */,
-				927E47D4246A85D900211803 /* ItemsVC.swift */,
-				927E47DE246ABEAA00211803 /* DetailItemVC.swift */,
-				927E47D6246A86E900211803 /* AddItemVC.swift */,
-				927E477B246A5BFC00211803 /* AddVendorVC.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -555,13 +587,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = StoreManager/StoreManager.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = SP6AR62AWA;
+				DEVELOPMENT_TEAM = NA49TH345U;
 				INFOPLIST_FILE = StoreManager/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = class.nhatnt.com.StoreManager;
+				PRODUCT_BUNDLE_IDENTIFIER = nhatnt.com.StoreManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -575,13 +607,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = StoreManager/StoreManager.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = SP6AR62AWA;
+				DEVELOPMENT_TEAM = NA49TH345U;
 				INFOPLIST_FILE = StoreManager/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = class.nhatnt.com.StoreManager;
+				PRODUCT_BUNDLE_IDENTIFIER = nhatnt.com.StoreManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

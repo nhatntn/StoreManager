@@ -29,9 +29,7 @@ class LoginVC: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitleColor(UIColor.white, for: UIControl.State())
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-        
         button.addTarget(self, action: #selector(handleLoginRegister), for: .touchUpInside)
-        
         return button
     }()
     
@@ -42,9 +40,7 @@ class LoginVC: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitleColor(UIColor.white, for: UIControl.State())
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-        
         button.addTarget(self, action: #selector(handleForgetPassword), for: .touchUpInside)
-        
         return button
     }()
     

@@ -127,7 +127,7 @@ extension ItemsVC: UITableViewDelegate, UITableViewDataSource {
         
         cell.backgroundColor = UIColor.white
         cell.nameLabel.text = item.name
-        cell.priceLabel.text = "\(item.price)"
+        cell.priceLabel.text = "\(item.price) $"
         if let urlString = item.imageUrl {
             let image = UIImage(named: "default-product")!
             cell.profileImageView.imageFromServerURL(urlString: urlString, PlaceHolderImage: image)

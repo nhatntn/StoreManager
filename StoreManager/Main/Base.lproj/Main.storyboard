@@ -38,7 +38,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aAh-bh-gnA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="686" y="-1130"/>
+            <point key="canvasLocation" x="716" y="-781"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="MFq-ll-vbr">
@@ -115,20 +115,11 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UVs-nz-eyY" customClass="DownPicker">
-                                                    <rect key="frame" x="199" y="8" width="207" height="73"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                                </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="UVs-nz-eyY" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="uea-L7-TGW" secondAttribute="trailing" constant="8" symbolic="YES" id="0xl-Xc-VOM"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="uea-L7-TGW" secondAttribute="bottom" constant="8" id="Dq7-8n-EE9"/>
-                                                <constraint firstAttribute="bottom" secondItem="UVs-nz-eyY" secondAttribute="bottom" constant="8" id="Z03-wC-94i"/>
                                                 <constraint firstItem="uea-L7-TGW" firstAttribute="leading" secondItem="siz-sX-kF6" secondAttribute="leading" constant="15" id="ceV-lV-MIc"/>
-                                                <constraint firstItem="UVs-nz-eyY" firstAttribute="top" secondItem="siz-sX-kF6" secondAttribute="top" constant="8" id="dAb-nP-qSg"/>
                                                 <constraint firstItem="uea-L7-TGW" firstAttribute="top" secondItem="siz-sX-kF6" secondAttribute="topMargin" constant="8" id="i6b-f3-SA8"/>
-                                                <constraint firstItem="UVs-nz-eyY" firstAttribute="width" secondItem="siz-sX-kF6" secondAttribute="width" multiplier="0.5" id="lK4-Of-32Y"/>
-                                                <constraint firstAttribute="trailing" secondItem="UVs-nz-eyY" secondAttribute="trailing" constant="8" id="zZU-eV-uiI"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -276,9 +267,10 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Settings" image="wrench" catalog="system" id="KY7-3i-h6a"/>
-                    <navigationItem key="navigationItem" title="Settings" id="HP6-nM-wE2"/>
+                    <navigationItem key="navigationItem" title="Settings" id="HP6-nM-wE2">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="C4k-zG-tt1"/>
+                    </navigationItem>
                     <connections>
-                        <outlet property="languagePickerView" destination="UVs-nz-eyY" id="pbf-XM-vHw"/>
                         <outlet property="signOutButton" destination="y57-dd-JCW" id="BcJ-fe-jSg"/>
                     </connections>
                 </tableViewController>
