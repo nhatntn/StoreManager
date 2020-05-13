@@ -244,8 +244,9 @@ class DetailVendorVC: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         }
     }
     
-    @objc func handleAddNewItem() {
-        let alert = UIAlertController(title: "Add New Item", message: "\n\n\n\n\n\n", preferredStyle: .alert)
+    @objc func handleAddNewItem(message: String?) {
+        let title = message ?? "Add New Item"
+        let alert = UIAlertController(title: title, message: "\n\n\n\n\n\n", preferredStyle: .alert)
         
         let pickerFrame = UIPickerView(frame: CGRect(x: 5, y: 20, width: 250, height: 140))
         
@@ -262,7 +263,7 @@ class DetailVendorVC: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Add", style: .default, handler: { (UIAlertAction) in
             guard let id = self.vendor.id, let newItem = self.newItem, let count = Int(self.countTextField.text ?? "") else {
-                self.handleAddNewItem()
+                self.handleAddNewItem(message: "Your input empty! Try again")
                 return
             }
             
@@ -279,7 +280,7 @@ class DetailVendorVC: UIViewController, UIPickerViewDataSource, UIPickerViewDele
                     self.showAlert(alertText: "Add New Item", alertMessage: "Something went wrong\nPlease try later" +  err.localizedDescription)
                     return
                 } else {
-                    self.showAlert(alertText: "Add New Item", alertMessage: "Successfully") 
+                    self.showAlert(alertText: "Add New Item", alertMessage: "Successfully")
                     
                     guard let itemId = addedItem.id else {
                         return
