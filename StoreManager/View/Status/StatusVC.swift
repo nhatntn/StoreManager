@@ -112,12 +112,14 @@ extension StatusVC: UITableViewDelegate, UITableViewDataSource {
         item = items[indexPath.row]
         cell.backgroundColor = UIColor.white
         if let count = item.count, let outOfStock = self.outOfStock, let nearOutOfStock = self.nearOutOfStock {
-            let defaultColor = UIColor(r: 17, g: 45, b: 78)
             let nearOutOfStockColor = UIColor(r: 252, g: 191, b: 30)
             let outOfStockColor = UIColor(r: 228, g: 63, b: 90)
             
-            cell.cellView.backgroundColor = count <= outOfStock ? outOfStockColor : defaultColor
-            cell.cellView.backgroundColor = count <= nearOutOfStock ? nearOutOfStockColor : defaultColor
+            if count <= outOfStock {
+                cell.cellView.backgroundColor = outOfStockColor
+            } else if count <= nearOutOfStock {
+                cell.cellView.backgroundColor = nearOutOfStockColor
+            }
         }
         cell.nameLabel.text = item.name
         cell.priceLabel.text = "\(item.price) $"
