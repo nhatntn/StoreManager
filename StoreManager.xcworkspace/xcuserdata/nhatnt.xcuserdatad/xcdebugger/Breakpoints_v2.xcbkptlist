@@ -19,16 +19,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "89C27440-94EF-4FCB-BFF1-7FD874B3A8CA"
-            shouldBeEnabled = "Yes"
+            uuid = "27D84474-92D6-4813-A6BD-125CF8A8696B"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "StoreManager/View/Vendors/DetailVendorVC.swift"
+            filePath = "StoreManager/View/Items/ItemsVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "278"
-            endingLineNumber = "278"
-            landmarkName = "handleAddNewItem(message:)"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "loadData()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

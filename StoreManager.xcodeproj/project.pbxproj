@@ -23,6 +23,11 @@
 		927E47DB246AA0FE00211803 /* DictionaryDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927E47DA246AA0FE00211803 /* DictionaryDecoder.swift */; };
 		927E47DF246ABEAA00211803 /* DetailItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927E47DE246ABEAA00211803 /* DetailItemVC.swift */; };
 		927E47E1246AD34B00211803 /* DetailVendorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927E47E0246AD34B00211803 /* DetailVendorVC.swift */; };
+		928FF56D246C6B8900564FD6 /* ItemStatusViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928FF56C246C6B8800564FD6 /* ItemStatusViewCell.swift */; };
+		928FF56F246C6BD000564FD6 /* ItemViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928FF56E246C6BD000564FD6 /* ItemViewCell.swift */; };
+		928FF572246C6C5500564FD6 /* VendorDetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928FF571246C6C5500564FD6 /* VendorDetailViewCell.swift */; };
+		928FF575246C6CE800564FD6 /* VendorViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928FF574246C6CE800564FD6 /* VendorViewCell.swift */; };
+		928FF577246C6D3E00564FD6 /* VendorDetaillItemViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928FF576246C6D3E00564FD6 /* VendorDetaillItemViewCell.swift */; };
 		92B325FC246812E000F3B341 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B325FB246812E000F3B341 /* MainViewController.swift */; };
 		92B325FE246813D600F3B341 /* StatusVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B325FD246813D600F3B341 /* StatusVC.swift */; };
 		92B32602246813EF00F3B341 /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B32601246813EF00F3B341 /* SettingVC.swift */; };
@@ -64,6 +69,11 @@
 		927E47DA246AA0FE00211803 /* DictionaryDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryDecoder.swift; sourceTree = "<group>"; };
 		927E47DE246ABEAA00211803 /* DetailItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailItemVC.swift; sourceTree = "<group>"; };
 		927E47E0246AD34B00211803 /* DetailVendorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVendorVC.swift; sourceTree = "<group>"; };
+		928FF56C246C6B8800564FD6 /* ItemStatusViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemStatusViewCell.swift; sourceTree = "<group>"; };
+		928FF56E246C6BD000564FD6 /* ItemViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewCell.swift; sourceTree = "<group>"; };
+		928FF571246C6C5500564FD6 /* VendorDetailViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorDetailViewCell.swift; sourceTree = "<group>"; };
+		928FF574246C6CE800564FD6 /* VendorViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorViewCell.swift; sourceTree = "<group>"; };
+		928FF576246C6D3E00564FD6 /* VendorDetaillItemViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorDetaillItemViewCell.swift; sourceTree = "<group>"; };
 		92B325FB246812E000F3B341 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		92B325FD246813D600F3B341 /* StatusVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusVC.swift; sourceTree = "<group>"; };
 		92B32601246813EF00F3B341 /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
@@ -111,6 +121,7 @@
 		9238A414246B176C00233062 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				928FF573246C6CD200564FD6 /* Cells */,
 				927E4779246A4D6D00211803 /* VendorsVC.swift */,
 				927E477B246A5BFC00211803 /* AddVendorVC.swift */,
 				927E47E0246AD34B00211803 /* DetailVendorVC.swift */,
@@ -124,6 +135,7 @@
 				927E47D4246A85D900211803 /* ItemsVC.swift */,
 				927E47D6246A86E900211803 /* AddItemVC.swift */,
 				927E47DE246ABEAA00211803 /* DetailItemVC.swift */,
+				928FF570246C6C0800564FD6 /* Cells */,
 			);
 			path = Items;
 			sourceTree = "<group>";
@@ -132,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				92B325FD246813D600F3B341 /* StatusVC.swift */,
+				928FF56C246C6B8800564FD6 /* ItemStatusViewCell.swift */,
 			);
 			path = Status;
 			sourceTree = "<group>";
@@ -171,6 +184,24 @@
 				92508B062468DD8A00CAD97D /* LoginVC+handlers.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		928FF570246C6C0800564FD6 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				928FF56E246C6BD000564FD6 /* ItemViewCell.swift */,
+				928FF571246C6C5500564FD6 /* VendorDetailViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		928FF573246C6CD200564FD6 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				928FF574246C6CE800564FD6 /* VendorViewCell.swift */,
+				928FF576246C6D3E00564FD6 /* VendorDetaillItemViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		92B325FA246812A900F3B341 /* Resources */ = {
@@ -406,6 +437,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				92508B7D246931F400CAD97D /* User.swift in Sources */,
+				928FF572246C6C5500564FD6 /* VendorDetailViewCell.swift in Sources */,
 				927E47E1246AD34B00211803 /* DetailVendorVC.swift in Sources */,
 				92508B042468DD2400CAD97D /* LoginVC.swift in Sources */,
 				92B77968246689C4005A768A /* StoreManager.xcdatamodeld in Sources */,
@@ -416,13 +448,17 @@
 				92B32602246813EF00F3B341 /* SettingVC.swift in Sources */,
 				92B7795E246689C4005A768A /* AppDelegate.swift in Sources */,
 				92B325FE246813D600F3B341 /* StatusVC.swift in Sources */,
+				928FF577246C6D3E00564FD6 /* VendorDetaillItemViewCell.swift in Sources */,
 				92508B072468DD8A00CAD97D /* LoginVC+handlers.swift in Sources */,
 				927E47DB246AA0FE00211803 /* DictionaryDecoder.swift in Sources */,
 				92508AC1246845D400CAD97D /* Extensiones.swift in Sources */,
+				928FF56F246C6BD000564FD6 /* ItemViewCell.swift in Sources */,
 				92508AFF2468690700CAD97D /* Vendor.swift in Sources */,
 				927E477C246A5BFC00211803 /* AddVendorVC.swift in Sources */,
 				927E477A246A4D6D00211803 /* VendorsVC.swift in Sources */,
+				928FF56D246C6B8900564FD6 /* ItemStatusViewCell.swift in Sources */,
 				92B77960246689C4005A768A /* SceneDelegate.swift in Sources */,
+				928FF575246C6CE800564FD6 /* VendorViewCell.swift in Sources */,
 				927E47D7246A86E900211803 /* AddItemVC.swift in Sources */,
 				92B325FC246812E000F3B341 /* MainViewController.swift in Sources */,
 			);

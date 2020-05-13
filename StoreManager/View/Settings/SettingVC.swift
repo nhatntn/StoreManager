@@ -26,14 +26,22 @@ class SettingVC: UITableViewController{
         super.viewDidLoad()
         self.setupSignOutButton()
         self.setupSaveButton()
+        DispatchQueue.main.async {
+            self.loadData()
+        }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    private func setupSaveButton() {
+        self.saveButotn.rx.tap.bind {
+            self.saveSettings()
+        }.disposed(by: disposeBag)
+    }
+    
+    private func loadData() {
         guard let uid = self.uid else {
             return
         }
-        self.db.collection("users").document(uid).getDocument { (document, err) in
+        self.db.collection("users").document(uid).addSnapshotListener { (document, err) in
             if let document = document, document.exists {
                 let user = try! DictionaryDecoder().decode(User.self, from: document.data() ?? [:])
                 self.user = user
@@ -44,12 +52,6 @@ class SettingVC: UITableViewController{
                 self.showAlert(alertText: "Get Settings", alertMessage: "Something went wrong\nPlease try later" + (err?.localizedDescription ?? ""))
             }
         }
-    }
-    
-    private func setupSaveButton() {
-        self.saveButotn.rx.tap.bind {
-            self.saveSettings()
-        }.disposed(by: disposeBag)
     }
     
     private func saveSettings() {

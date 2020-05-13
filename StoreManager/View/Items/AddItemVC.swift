@@ -27,7 +27,6 @@ class AddItemVC: UIViewController {
         return view
     }()
     
-    
     lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "default-product")
@@ -260,9 +259,4 @@ extension AddItemVC: UIImagePickerControllerDelegate, UINavigationControllerDele
         dismiss(animated: true, completion: nil)
     }
     
-}
-
-// Helper function inserted by Swift 4.2 migrator.
-func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey: Any]) -> [String: Any] {
-    return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
 }
