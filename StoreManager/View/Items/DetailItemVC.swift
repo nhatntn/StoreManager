@@ -108,7 +108,7 @@ class DetailItemVC: UIViewController {
         db.collection("items").document(id).updateData([
             "name": name,
             "description": description,
-            "price": Int(priceString) ?? 0,
+            "price": Int(priceString.filter{ $0 != "$"}) ?? 0,
             "count": Int(count) ?? 0
         ]) { err in
             if err != nil {
@@ -281,11 +281,11 @@ class DetailItemVC: UIViewController {
     
     private func loadData() {
         let availableVendor = self.item.vendors
-        if availableVendor.count == 0 {
+        guard let userId = Auth.auth().currentUser?.uid, availableVendor.count != 0 else {
             return
         }
         
-        self.db.collection("vendors").whereField("id", in: availableVendor).addSnapshotListener { (querySnapshot, err) in
+        self.db.collection("vendors").whereField("userId", isEqualTo: userId).whereField("id", in: availableVendor).addSnapshotListener { (querySnapshot, err) in
             if let err = err {
                 self.showAlert(alertText: "Get Vendors", alertMessage: "Something went wrong\nPlease try later" +  err.localizedDescription)
                 return

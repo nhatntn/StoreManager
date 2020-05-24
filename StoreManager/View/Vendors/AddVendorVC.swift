@@ -187,7 +187,7 @@ class AddVendorVC: UIViewController {
     func setupAddButton() {
         self.addButton.rx.tap.bind {
             guard let email = self.emailTextField.text, let address = self.addressTextField.text,
-                let name = self.nameTextField.text else {
+                let name = self.nameTextField.text, let userId = Auth.auth().currentUser?.uid else {
                     self.showAlert(alertText: "Add New Vendor", alertMessage: "Please check your inputs\nAnd try again")
                     return
             }
@@ -197,7 +197,7 @@ class AddVendorVC: UIViewController {
                 return
             }
             
-            self.db.collection("vendors").whereField("name", isEqualTo: name).getDocuments() { (querySnapshot, err) in
+            self.db.collection("vendors").whereField("userId", isEqualTo: userId).whereField("name", isEqualTo: name).getDocuments() { (querySnapshot, err) in
                 if let err = err {
                     self.showAlert(alertText: "Add New Vendor", alertMessage: "Something went wrong\nPlease try later" +  err.localizedDescription)
                     return

@@ -67,7 +67,7 @@ class StatusVC: UIViewController {
                 self.outOfStock = user.outOfStock
                 self.nearOutOfStock = user.nearOutOfStock
                 
-                self.db.collection("items").addSnapshotListener { (querySnapshot, err) in
+                self.db.collection("items").whereField("userId", isEqualTo: uid).addSnapshotListener { (querySnapshot, err) in
                     if let err = err {
                         self.showAlert(alertText: "Get Items", alertMessage: "Something went wrong\nPlease try later" + err.localizedDescription)
                         return

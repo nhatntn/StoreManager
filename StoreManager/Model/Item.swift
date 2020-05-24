@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Firebase
 
 public struct Item: Codable {
     var name: String
@@ -16,4 +17,5 @@ public struct Item: Codable {
     var id: String?
     var vendors: [String] = []
     var count: Int?
+    let userId: String? = Auth.auth().currentUser?.uid
 }

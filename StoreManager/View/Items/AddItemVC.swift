@@ -156,12 +156,13 @@ class AddItemVC: UIViewController {
     
     func setupAddButton() {
         self.addButton.rx.tap.bind {
-            guard let name = self.nameTextField.text, let priceText = self.priceTextField.text else {
+            guard let name = self.nameTextField.text, let priceText = self.priceTextField.text,
+                let userID = Auth.auth().currentUser?.uid else {
                 self.showAlert(alertText: "Add New Item", alertMessage: "Please check your inputs\nAnd try again")
                 return
             }
             
-            self.db.collection("items").whereField("name", isEqualTo: name).getDocuments() { (querySnapshot, err) in
+            self.db.collection("items").whereField("userId", isEqualTo: userID).whereField("name", isEqualTo: name).getDocuments() { (querySnapshot, err) in
                 if let err = err {
                     self.showAlert(alertText: "Add New Item", alertMessage: "Something went wrong\nPlease try later" +  err.localizedDescription)
                     return

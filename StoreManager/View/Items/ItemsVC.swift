@@ -64,7 +64,11 @@ class ItemsVC: UIViewController {
     }
     
     private func loadData() {
-        self.db.collection("items").addSnapshotListener { (querySnapshot, err) in
+        guard let userID = Auth.auth().currentUser?.uid else {
+            return
+        }
+        
+        self.db.collection("items").whereField("userId", isEqualTo: userID).addSnapshotListener { (querySnapshot, err) in
             if let err = err {
                 self.showAlert(alertText: "Get Items", alertMessage: "Something went wrong\nPlease try later" + err.localizedDescription)
                 return

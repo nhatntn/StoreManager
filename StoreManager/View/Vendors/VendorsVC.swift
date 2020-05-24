@@ -84,7 +84,11 @@ class VendorsVC: UIViewController {
     }
     
     private func loadData() {
-        self.db.collection("vendors").addSnapshotListener { (querySnapshot, err) in
+        guard let userId = Auth.auth().currentUser?.uid else {
+            return
+        }
+        
+        self.db.collection("vendors").whereField("userId", isEqualTo: userId).addSnapshotListener { (querySnapshot, err) in
             if let err = err {
                 self.showAlert(alertText: "Get Vendors", alertMessage: "Something went wrong\nPlease try later" + err.localizedDescription)
                 return
