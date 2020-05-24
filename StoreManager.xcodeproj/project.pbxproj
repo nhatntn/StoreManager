@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5C175D9C28AF70B2077B7487 /* Pods_StoreManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C14296397251E6E8D06B41E /* Pods_StoreManager.framework */; };
+		9232C7A1247A7AEB0017D9F3 /* CurrencyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9232C7A0247A7AEB0017D9F3 /* CurrencyTextField.swift */; };
 		92508ABB2468228800CAD97D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 92508ABA2468228800CAD97D /* GoogleService-Info.plist */; };
 		92508ABE246844D300CAD97D /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92508ABD246844D300CAD97D /* Item.swift */; };
 		92508AC1246845D400CAD97D /* Extensiones.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92508AC0246845D400CAD97D /* Extensiones.swift */; };
@@ -53,6 +54,7 @@
 /* Begin PBXFileReference section */
 		2C14296397251E6E8D06B41E /* Pods_StoreManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StoreManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		90A44D1A3EE1CA2B6B09B5F9 /* Pods-StoreManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StoreManager.release.xcconfig"; path = "Target Support Files/Pods-StoreManager/Pods-StoreManager.release.xcconfig"; sourceTree = "<group>"; };
+		9232C7A0247A7AEB0017D9F3 /* CurrencyTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTextField.swift; sourceTree = "<group>"; };
 		924C5BCB24695F9B00D5B735 /* StoreManager.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StoreManager.entitlements; sourceTree = "<group>"; };
 		92508ABA2468228800CAD97D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		92508ABD246844D300CAD97D /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				92508AC0246845D400CAD97D /* Extensiones.swift */,
 				927E47582469954C00211803 /* Switcher.swift */,
 				927E47DA246AA0FE00211803 /* DictionaryDecoder.swift */,
+				9232C7A0247A7AEB0017D9F3 /* CurrencyTextField.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -436,6 +439,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9232C7A1247A7AEB0017D9F3 /* CurrencyTextField.swift in Sources */,
 				92508B7D246931F400CAD97D /* User.swift in Sources */,
 				928FF572246C6C5500564FD6 /* VendorDetailViewCell.swift in Sources */,
 				927E47E1246AD34B00211803 /* DetailVendorVC.swift in Sources */,

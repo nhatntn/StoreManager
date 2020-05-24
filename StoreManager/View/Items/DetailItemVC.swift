@@ -62,9 +62,18 @@ class DetailItemVC: UIViewController {
         tf.translatesAutoresizingMaskIntoConstraints = false
         return tf
     }()
-    let priceTextField: UITextField = {
-        let tf = UITextField()
+    let priceTextField: CurrencyTextField = {
+        let tf = CurrencyTextField()
         tf.placeholder = "Price"
+        tf.backgroundColor = .white
+        tf.locale = Locale(identifier: "en_US")
+        tf.translatesAutoresizingMaskIntoConstraints = false
+        tf.keyboardType = .numberPad
+        return tf
+    }()
+    let countTextField: UITextField = {
+        let tf = UITextField()
+        tf.placeholder = "No."
         tf.backgroundColor = .white
         tf.translatesAutoresizingMaskIntoConstraints = false
         tf.keyboardType = .numberPad
@@ -90,8 +99,8 @@ class DetailItemVC: UIViewController {
     }
     
     @objc func saveTapped() {
-        guard let id = item.id, let name = nameTextField.text,
-            let description = descriptionTextField.text, let priceString = priceTextField.text else {
+        guard let id = item.id, let name = nameTextField.text, let description = descriptionTextField.text,
+            let priceString = priceTextField.text, let count = countTextField.text else {
                 return
         }
         
@@ -100,6 +109,7 @@ class DetailItemVC: UIViewController {
             "name": name,
             "description": description,
             "price": Int(priceString) ?? 0,
+            "count": Int(count) ?? 0
         ]) { err in
             if err != nil {
                 self.showAlert(alertText: "Update Item", alertMessage: "Please check your inputs\nAnd try again")
@@ -155,7 +165,7 @@ class DetailItemVC: UIViewController {
         headerView.snp.makeConstraints {
             $0.top.equalToSuperview().inset(100)
             $0.left.right.equalToSuperview().inset(15)
-            $0.height.equalTo(150)
+            $0.height.equalTo(192)
         }
         
         headerView.addSubview(itemImageView)
@@ -182,11 +192,27 @@ class DetailItemVC: UIViewController {
             $0.height.equalTo(43)
         }
         
+        let nameSeperator = self.createSeparatorView()
+        inputContainerView.addSubview(nameSeperator)
+        nameSeperator.snp.makeConstraints {
+             $0.left.width.equalToSuperview()
+             $0.top.equalTo(nameTextField.snp.bottom)
+             $0.height.equalTo(1)
+        }
+        
         inputContainerView.addSubview(descriptionTextField)
         descriptionTextField.snp.makeConstraints {
             $0.right.left.equalToSuperview().inset(10)
             $0.top.equalTo(nameTextField.snp.bottom)
             $0.height.equalTo(43)
+        }
+        
+        let descriptionSeperator = self.createSeparatorView()
+        inputContainerView.addSubview(descriptionSeperator)
+        descriptionSeperator.snp.makeConstraints {
+             $0.left.width.equalToSuperview()
+             $0.top.equalTo(descriptionTextField.snp.bottom)
+             $0.height.equalTo(1)
         }
         
         inputContainerView.addSubview(priceTextField)
@@ -195,6 +221,32 @@ class DetailItemVC: UIViewController {
             $0.top.equalTo(descriptionTextField.snp.bottom)
             $0.height.equalTo(43)
         }
+        
+        let priceSeperator = self.createSeparatorView()
+        inputContainerView.addSubview(priceSeperator)
+        priceSeperator.snp.makeConstraints {
+             $0.left.width.equalToSuperview()
+             $0.top.equalTo(priceTextField.snp.bottom)
+             $0.height.equalTo(1)
+        }
+        
+        inputContainerView.addSubview(countTextField)
+        countTextField.snp.makeConstraints {
+            $0.right.left.equalToSuperview().inset(10)
+            $0.top.equalTo(priceTextField.snp.bottom)
+            $0.height.equalTo(43)
+        }
+        
+        inputContainerView.bringSubviewToFront(nameSeperator)
+        inputContainerView.bringSubviewToFront(descriptionSeperator)
+        inputContainerView.bringSubviewToFront(priceSeperator)
+    }
+    
+    private func createSeparatorView() -> UIView {
+        let view = UIView()
+        view.backgroundColor = UIColor(r: 220, g: 220, b: 220)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }
     
     func setupTableView() {
@@ -223,7 +275,8 @@ class DetailItemVC: UIViewController {
     private func setupData() {
         self.nameTextField.text = item.name
         self.descriptionTextField.text = item.description
-        self.priceTextField.text = "\(item.price)"
+        self.priceTextField.text = "\(item.price)".asCurrency(locale: self.priceTextField.locale)
+        self.countTextField.text = "\(item.count ?? 0)"
     }
     
     private func loadData() {
@@ -297,7 +350,6 @@ extension DetailItemVC: UIImagePickerControllerDelegate, UINavigationControllerD
         if let editedImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
             selectedImageFromPicker = editedImage
         } else if let originalImage = info["UIImagePickerControllerOriginalImage"] as? UIImage {
-            
             selectedImageFromPicker = originalImage
         }
         
