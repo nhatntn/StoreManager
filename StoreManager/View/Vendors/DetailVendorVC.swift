@@ -223,6 +223,7 @@ class DetailVendorVC: UIViewController, UIPickerViewDataSource, UIPickerViewDele
             $0.right.equalToSuperview().inset(15)
             $0.height.equalTo(titleLabel)
         }
+        //Đăng kí event tap button với RxSwift
         addButton.rx.tap.bind {
             self.handleAddNewItem()
         }.disposed(by: disposeBag)

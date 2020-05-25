@@ -339,7 +339,7 @@ extension DetailItemVC: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension DetailItemVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
+     //Thiết lập event tap to image để hiển thị danh sách image picker từ album ảnh. Picker này sẽ cho chọn ảnh và lấy ảnh từ album. khi chọn xong thì dismiss đẻ đóng viewcontroller này
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         // Local variable inserted by Swift 4.2 migrator.
         let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)

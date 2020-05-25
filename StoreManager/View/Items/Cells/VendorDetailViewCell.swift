@@ -80,6 +80,7 @@ class VendorDetailViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupView()
+        //Đăng kí event tap button với RxSwift
         orderButton.rx.tap.bind {
             self.handleOrder()
         }.disposed(by: disposeBag)
@@ -90,6 +91,7 @@ class VendorDetailViewCell: UITableViewCell {
     }
     
     @objc func handleOrder() {
+        //Handle case mở maill
         let itemName = self.item?.name ?? ""
         let count = self.orderTextField.text ?? ""
         let receiver = self.emailLabel.text ?? ""

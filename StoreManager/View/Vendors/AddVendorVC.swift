@@ -185,7 +185,7 @@ class AddVendorVC: UIViewController {
     }
     
     func setupAddButton() {
-        self.addButton.rx.tap.bind {
+        self.addButton.rx.tap.bind { //Đăng kí event tap button với RxSwift
             guard let email = self.emailTextField.text, let address = self.addressTextField.text,
                 let name = self.nameTextField.text, let userId = Auth.auth().currentUser?.uid else {
                     self.showAlert(alertText: "Add New Vendor", alertMessage: "Please check your inputs\nAnd try again")

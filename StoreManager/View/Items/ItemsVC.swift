@@ -30,6 +30,7 @@ class ItemsVC: UIViewController {
         self.setupTableView()
         self.title = "Items"
         
+        //Thiết lập search Controller (delegate, text, ...)
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search Items"
@@ -37,15 +38,15 @@ class ItemsVC: UIViewController {
         definesPresentationContext = true
         searchController.searchBar.delegate = self
         
-        DispatchQueue.main.async {
-            self.loadData()
-        }
+        //Thực hiện load data
+        self.loadData()
     }
     
     func setupTableView() {
+        //Setup delegate và dataSource cho tablview
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(ItemViewCell.self, forCellReuseIdentifier: "cellId")
+        tableView.register(ItemViewCell.self, forCellReuseIdentifier: "cellId") //Đăng kí Cell hiển thị trên tableView. Nếu không đk sẽ không load được
         tableView.separatorStyle = .none
         tableView.separatorColor = .white
         
@@ -86,12 +87,12 @@ class ItemsVC: UIViewController {
     var isSearchBarEmpty: Bool {
         return searchController.searchBar.text?.isEmpty ?? true
     }
-    
+    //Phục vụ việc hiển thị hay không hiển thị danh sách các items sau khi filter
     var isFiltering: Bool {
         let searchBarScopeIsFiltering = searchController.searchBar.selectedScopeButtonIndex != 0
         return searchController.isActive && (!isSearchBarEmpty || searchBarScopeIsFiltering)
     }
-    
+    //get danh sách items từ searchText
     func filterContentForSearchText(_ searchText: String) {
         filteredItems = items.filter { (item: Item) -> Bool in
             if !isSearchBarEmpty {

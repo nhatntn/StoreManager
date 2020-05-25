@@ -10,6 +10,8 @@ import UIKit
 import SnapKit
 
 class ItemStatusViewCell: UITableViewCell {
+    //Khởi tạo các thành phần UI cần thiết cho 1 cell
+    
     let cellView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(r: 17, g: 45, b: 78)
@@ -51,6 +53,7 @@ class ItemStatusViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
+    //Set auto layouts với Snapkit
     func setupView() {
         addSubview(cellView)
         cellView.addSubview(nameLabel)

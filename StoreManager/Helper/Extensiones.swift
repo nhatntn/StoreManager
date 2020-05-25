@@ -32,44 +32,11 @@ extension String: LocalizedError {
 }
 
 extension UIColor {
-    
+    //Load màu ở dạng rgb
     convenience init(r: CGFloat, g: CGFloat, b: CGFloat) {
         self.init(red: r/255, green: g/255, blue: b/255, alpha: 1)
     }
     
-}
-
-var vSpinner: UIView?
-extension UIViewController {
-    func showSpinner(onView : UIView) {
-        let spinnerView = UIView.init(frame: onView.bounds)
-        spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
-        let ai = UIActivityIndicatorView.init(style: UIActivityIndicatorView.Style.large)
-        ai.startAnimating()
-        ai.center = spinnerView.center
-        
-        DispatchQueue.main.async {
-            spinnerView.addSubview(ai)
-            onView.addSubview(spinnerView)
-        }
-        
-        vSpinner = spinnerView
-    }
-    
-    func removeSpinner() {
-        DispatchQueue.main.async {
-            vSpinner?.removeFromSuperview()
-            vSpinner = nil
-        }
-    }
-    
-    func showAlert(alertText : String, alertMessage : String, handler: ((UIAlertAction) -> Void)? = nil) {
-        let alert = UIAlertController(title: alertText, message: alertMessage, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "Got it", style: UIAlertAction.Style.cancel, handler: handler))
-        //Add more actions as you see fit
-        self.present(alert, animated: true, completion: nil)
-    }
-
 }
 
 extension AuthErrorCode {
@@ -113,6 +80,7 @@ extension UIViewController{
 }
 
 extension UITextField {
+    //Check thông tin valid image
     func isValidEmail() -> Bool {
         guard let text = self.text else {
             return false
@@ -126,7 +94,7 @@ extension UITextField {
 
 
 extension UIImageView {
-    
+    //Load ảnh từ URL
     public func imageFromServerURL(urlString: String, PlaceHolderImage:UIImage) {
         
         if self.image == nil{

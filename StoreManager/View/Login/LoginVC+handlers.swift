@@ -17,6 +17,7 @@ enum SignStep {
 }
 
 extension LoginVC: UINavigationControllerDelegate {
+    //Quản lý segment hiện tại là register hay login -> chọn func handle khi tap vào button
     fileprivate var currentStep: SignStep {
         get {
             return loginRegisterSegmentedControl.selectedSegmentIndex == 0 ? .signIn : .signUp

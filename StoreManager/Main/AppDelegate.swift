@@ -14,9 +14,8 @@ import Firebase
 class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        FirebaseApp.configure()
-        Switcher.updateRootVC()
+        FirebaseApp.configure() //Thiết lập cấu hình Firebase. Load thông tin config từ file GoogleServices-Info.plist
+        Switcher.updateRootVC() //Chọn màn hình khởi tạo đầu tiên, đã login thì sẽ là màn hình Status Item nếu không thì sẽ là màn hình Login
         return true
     }
 

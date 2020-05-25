@@ -9,6 +9,7 @@
 import Foundation
 import Firebase
 
+//Khai báo stuct Item sử dụng Codable để encode và decode, tức là có thể hỗ trợ format JSON (một cách tiện lợi khi tương tác object và JSON)
 public struct Item: Codable {
     var name: String
     var price: Int

@@ -32,6 +32,7 @@ class SettingVC: UITableViewController{
     }
     
     private func setupSaveButton() {
+        //Đăng kí event tap vô button với RxSwift
         self.saveButotn.rx.tap.bind {
             self.saveSettings()
         }.disposed(by: disposeBag)
