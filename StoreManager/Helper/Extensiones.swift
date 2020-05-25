@@ -76,7 +76,13 @@ extension UIViewController{
 
         }
     }
-
+    
+    func showAlert(alertText : String, alertMessage : String, handler: ((UIAlertAction) -> Void)? = nil) {
+        let alert = UIAlertController(title: alertText, message: alertMessage, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Got it", style: UIAlertAction.Style.cancel, handler: handler))
+        //Add more actions as you see fit
+        self.present(alert, animated: true, completion: nil)
+    }
 }
 
 extension UITextField {
